@@ -5,14 +5,25 @@ dir <- getwd()
 music_genre_path <- file.path(dir, "archive", "music_genre.csv")
 
 # Load the dataset
-music_genre <- read.csv(music_genre_path)
+data <- read.csv(music_genre_path)
 
-# View the first few rows of the dataset
-head(music_genre)
+# Check column names and ensure music_genre is correct
+#colnames(data)
 
-# Check the structure of the dataset
-str(music_genre)
+# Convert the music_genre column to character if it's a factor
+data$music_genre <- as.character(data$music_genre)
 
-# Open the dataset in the viewer
-View(music_genre)
+# Create a subset with just Rap and Classical music genres
+subset_data <- subset(data, music_genre %in% c("Rap", "Classical"))
 
+# View the first few rows of the subset
+#head(subset_data)
+
+# Check the structure of the subset
+#str(subset_data)
+
+# Create a boxplot to show the distribution of instrumentalness across genres
+boxplot(instrumentalness ~ music_genre, data = subset_data, 
+        main = "Distribution of Instrumentalness across Genres", 
+        xlab = "Music Genre", ylab = "Instrumentalness", 
+        col = "lightblue")
