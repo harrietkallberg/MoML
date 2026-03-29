@@ -16,14 +16,8 @@ data$music_genre <- as.character(data$music_genre)
 # Create a subset with just Rap and Classical music genres
 subset_data <- subset(data, music_genre %in% c("Rap", "Classical"))
 
-# View the first few rows of the subset
-#head(subset_data)
-
-# Check the structure of the subset
-#str(subset_data)
-
 # Create a boxplot to show the distribution of instrumentalness across genres
-boxplot(instrumentalness ~ music_genre, data = subset_data, 
+boxplot(instrumentalness ~ music_genre, data = data, 
         main = "Distribution of Instrumentalness across Genres", 
         xlab = "Music Genre", ylab = "Instrumentalness", 
         col = "lightblue")
