@@ -41,6 +41,17 @@ plot_variance_explained <- function(explained_variance, plot_path) {
   cat("Variance explained plot saved as PNG in 'plots' folder.\n")
 }
 
+# Define a function for creating cumulative variance explained plot
+plot_cumulative_variance <- function(explained_variance, plot_path) {
+  cumulative_variance <- cumsum(explained_variance)  # Calculate cumulative variance
+  png(plot_path)
+  plot(cumulative_variance, type = "b", xlab = "Principal Components", 
+       ylab = "Cumulative Variance Explained", main = "Cumulative Variance Explained by PCA Components")
+  dev.off()
+  cat("Cumulative variance explained plot saved as PNG in 'plots' folder.\n")
+}
+
+
 # Define a function to create and save 2D PCA scatter plot
 plot_pca_2d <- function(pca_data, plot_path) {
   p1 <- ggplot(pca_data, aes(x = PC1, y = PC2, color = music_genre)) +
