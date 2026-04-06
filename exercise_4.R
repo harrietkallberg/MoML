@@ -38,12 +38,8 @@ plot_kpca <- function(pc_matrix, plot_colors, save_path, title) {
 
 main <- function() {
   
-  message("Step 1: Loading and Cleaning Data...")
   music_genre_path <- file.path(getwd(), "archive", "music_genre.csv")
-  # Use load_data with filter_cr = TRUE for Classical/Rap subset
-  data_cr <- load_data(music_genre_path, filter_cr = TRUE)
-  
-  message("Step 2: Splitting Data...")
+  data_cr <- load_data(music_genre_path)
   data_split <- split_data(data_cr)
   train_data <- data_split$train_data
   
