@@ -2,6 +2,7 @@
 library(class)    # provides knn() for k-Nearest Neighbour classification
 library(kernlab)  # provides kpca() for Kernel PCA representation
 library(ggplot2)  # for results visualisation
+library(praznik)
 
 # Load helper functions from all previous exercises
 source("exercise_1.R")  # provides load_data()
@@ -79,6 +80,7 @@ plot_results <- function(results_df, save_path) {
     geom_bar(stat = "identity", position = "dodge") +
     facet_wrap(~Metric) +
     scale_fill_manual(values = c("kNN" = "steelblue", "Logistic Regression" = "tomato")) +
+    coord_cartesian(ylim = c(0.9, 1)) +
     labs(title = "Classifier Performance Across Dataset Representations",
          x = "Dataset", y = "Score") +
     theme_minimal() +
@@ -178,8 +180,8 @@ main <- function() {
   
   # 10. Define all output paths in one place
   paths <- list(
-    table = file.path(tables_dir, "classification_results.csv"),
-    plot  = file.path(plots_dir,  "classification_results.png")
+    table = file.path(tables_dir, "classification_results_t2.csv"),
+    plot  = file.path(plots_dir,  "classification_results_t2.png")
   )
   
   # 11. Save results table and plot
